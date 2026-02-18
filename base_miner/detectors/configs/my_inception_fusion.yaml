@@ -1,0 +1,13 @@
+# Inception-style fusion: ViT + YOLO + GoogLeNet (subnet data only).
+# 1) Train YOLO first: see docs/TrainingYOLO.md -> set yolo_weights_path below.
+# 2) Train fusion:
+#    PyTorch: train_inception_fusion.py -> googlenet_fusion_path = .../googlenet_fusion.pt
+#    Keras:   train_inception_fusion_keras.py -> googlenet_fusion_path = .../inception_fusion_keras (dir)
+#            and set use_keras: true
+# 3) Use in miner: IMAGE_DETECTOR=InceptionFusion, IMAGE_DETECTOR_CONFIG=inception_fusion_roadwork.yaml
+
+vit_config: ViT_roadwork.yaml   # Default subnet ViT (natix-network-org/roadwork)
+yolo_weights_path: /home/dr/myenv/streetvision-subnet/workspace/best.pt
+googlenet_fusion_path: /home/dr/myenv/streetvision-subnet/inception_fusion_keras
+use_keras: true   # set true if you trained with train_inception_fusion_keras.py (path = dir with .keras files)
+roadwork_class_index: 1   # YOLO class 1 = roadwork

@@ -1,0 +1,7 @@
+# YOLO classifier for roadwork (binary). Use with detector class YOLOClassifier.
+# Train with: yolo classify train data=/path/to/imagefolder model=yolov11n-cls.pt epochs=50 ...
+# Recommended: yolov11n-cls.pt (stable) or yolov12n-cls.pt (newest, may be unstable)
+# Available sizes: n (nano), s (small), m (medium), l (large), x (xlarge)
+# Then set weights_path below to your best.pt
+weights_path: /path/to/your/roadwork_yolo/weights/best.pt
+roadwork_class_index: 1  # class 1 = roadwork (0 = no_roadwork)
