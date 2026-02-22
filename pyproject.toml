@@ -54,7 +54,7 @@ bittensor-cli = "^9.10.1"
 cryptography = "^46.0.3"
 
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.dev-dependencies]
 pre-commit = "^4.0.1"
 pre-commit-hooks = "5.0.0"
 black = "^24.10.0"

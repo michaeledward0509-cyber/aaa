@@ -75,8 +75,10 @@ class Miner(BaseMinerNeuron):
             bt.Synapse: The synapse object with the 'predictions' field populated with a list of probabilities
 
         """
+        bt.logging.info("Validator request received (forward_image)")
         if self.image_detector is None:
             bt.logging.info("Image detection model not configured; skipping image challenge")
+            synapse.prediction = -1
         else:
             bt.logging.info("Received image challenge!")
             try:
@@ -87,6 +89,7 @@ class Miner(BaseMinerNeuron):
             except Exception as e:
                 bt.logging.error("Error performing inference")
                 bt.logging.error(e)
+                synapse.prediction = -1  # Invalid response -> validator gives zero reward
 
             bt.logging.info(f"PREDICTION = {synapse.prediction}")
             label = synapse.testnet_label

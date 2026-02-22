@@ -7,7 +7,7 @@
 # 3) Use in miner: IMAGE_DETECTOR=InceptionFusion, IMAGE_DETECTOR_CONFIG=inception_fusion_roadwork.yaml
 
 vit_config: ViT_roadwork.yaml   # Default subnet ViT (natix-network-org/roadwork)
-yolo_weights_path: /home/dr/myenv/streetvision-subnet/workspace/best.pt
-googlenet_fusion_path: /home/dr/myenv/streetvision-subnet/inception_fusion_keras
+yolo_weights_path: /root/Workspace/aaa/workspace/best.pt
+googlenet_fusion_path: /root/Workspace/aaa/inception_fusion_keras
 use_keras: true   # set true if you trained with train_inception_fusion_keras.py (path = dir with .keras files)
 roadwork_class_index: 1   # YOLO class 1 = roadwork
