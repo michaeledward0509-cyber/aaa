@@ -82,10 +82,12 @@ class Miner(BaseMinerNeuron):
         else:
             bt.logging.info("Received image challenge!")
             try:
+                t0 = time.perf_counter()
                 image_bytes = base64.b64decode(synapse.image)
                 image = Image.open(io.BytesIO(image_bytes))
                 synapse.prediction = self.image_detector(image)
-
+                elapsed_ms = (time.perf_counter() - t0) * 1000
+                bt.logging.debug(f"Inference latency: {elapsed_ms:.1f} ms")
             except Exception as e:
                 bt.logging.error("Error performing inference")
                 bt.logging.error(e)

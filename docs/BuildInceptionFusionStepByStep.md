@@ -355,6 +355,16 @@ For **ideas to improve** the model (deeper fusion head, more epochs, fine-tuning
 
 For more detail on data, Colab, and augmentation, see [TrainingOnCPUAndFreeCloud.md](TrainingOnCPUAndFreeCloud.md) and [TrainingInceptionFusion.md](TrainingInceptionFusion.md).
 
+#Latency
+Offline latency script (recommended)
+Run the new script so it uses the same detector and config as your miner:
+cd /root/Workspace/aaapoetry run python scripts/measure_detector_latency.py
+It loads your detector from miner.env (InceptionFusion + my_inception_fusion.yaml), runs warmup then many inference steps, and prints:
+Mean, std, median (p50), p95, p99 in milliseconds
+A note if p99 is above the validator timeout (9 s)
+Options:
+# More warmup and runs for stable statspoetry run python scripts/measure_detector_latency.py --warmup 5 --runs 50# GPUpoetry run python scripts/measure_detector_latency.py --device cuda# Use a real image instead of a dummy onepoetry run python scripts/measure_detector_latency.py --image /path/to/image.jpg
+This measures inference-only latency (decode + detector forward).
 
 
 # Evaluation Results
